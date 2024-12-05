@@ -17,5 +17,7 @@ class LoseScreenActivity : AppCompatActivity() {
             insets
         }
         //You lose!
+
+        // button.setOnClickListener{finish()}
     }
 }

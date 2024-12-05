@@ -17,5 +17,7 @@ class WinScreenActivity : AppCompatActivity() {
             insets
         }
         //..("youwon!!) (import name)
+
+        // button.setOnClickListener{finish()}
     }
 }

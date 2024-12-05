@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 class MainActivity : AppCompatActivity() {
 
     lateinit var humanPlayer: Player
+    lateinit var pcPlayer: Player
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +26,9 @@ class MainActivity : AppCompatActivity() {
 
         //creates an object for the human player
         humanPlayer = Player(name = playerName, cardsLeft = 26)
+
+        //PC player
+        pcPlayer = Player(name = "Computer", cardsLeft = 26)
 
         //TODO add a greeting
 
