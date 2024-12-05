@@ -5,7 +5,7 @@ class Deck {
     private val ranks = (2..14) //14 is Ace, 13 is King etc
 
     //makes a changable list of cards
-    private val cards = mutableListOf<Card>()
+    val cards = mutableListOf<Card>()
 
     //adds cards to the deck and shuffles
     init {
