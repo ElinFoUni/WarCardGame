@@ -1,4 +1,5 @@
 package com.example.war.classes
 
-class Card {
+data class Card(val rank: Int, val suit: String) {
+
 }
