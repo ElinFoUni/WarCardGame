@@ -2,21 +2,7 @@ package com.example.war.classes
 
 class Game {
 
-    fun winBattleState() {
+    val deck = Deck()
 
-    }
-
-    fun loseBattleState() {
-
-    }
-
-    //(Simple version - cannot actually use the "war" mechanic for now)
-    fun drawBattleState() {
-
-    }
-
-    /*fun war() {
-
-    }*/
 
 }

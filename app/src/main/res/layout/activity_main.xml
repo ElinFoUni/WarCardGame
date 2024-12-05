@@ -37,23 +37,23 @@
         android:text="Cards Left"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintHorizontal_bias="0.109"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.734" />
+        app:layout_constraintVertical_bias="0.744" />
 
     <TextView
         android:id="@+id/playerCardNumberTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginBottom="164dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginBottom="152dp"
         android:text="X"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/dealButton"
         android:layout_width="103dp"
         android:layout_height="147dp"
         android:scaleType="centerInside"
@@ -67,27 +67,36 @@
         app:srcCompat="@drawable/blue_back" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/pcPlayerCardImage"
         android:layout_width="100dp"
         android:layout_height="145dp"
-        app:srcCompat="@drawable/two_clover"
-        tools:layout_editor_absoluteX="156dp"
-        tools:layout_editor_absoluteY="79dp" />
+        app:layout_constraintBottom_toTopOf="@+id/roundMessageTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.658"
+        app:srcCompat="@drawable/red_back" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/humanPlayerCardImage"
         android:layout_width="100dp"
         android:layout_height="145dp"
-        app:srcCompat="@drawable/five_hearts"
-        tools:layout_editor_absoluteX="156dp"
-        tools:layout_editor_absoluteY="305dp" />
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/dealButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/blue_back" />
 
     <TextView
         android:id="@+id/roundMessageTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
         android:text="XYZ won this round!"
-        tools:layout_editor_absoluteX="144dp"
-        tools:layout_editor_absoluteY="254dp" />
+        app:layout_constraintBottom_toTopOf="@+id/humanPlayerCardImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

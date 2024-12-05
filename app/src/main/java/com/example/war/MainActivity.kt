@@ -2,6 +2,9 @@ package com.example.war
 
 import com.example.war.classes.Player
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,6 +14,11 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var humanPlayer: Player
     lateinit var pcPlayer: Player
+
+    //cards shown face up on screen
+    lateinit var humanPlayerCardImage: ImageView
+    lateinit var pcPlayerCardImage: ImageView
+    //late init cards left goes here?
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +37,10 @@ class MainActivity : AppCompatActivity() {
 
         //PC player
         pcPlayer = Player(name = "Computer", cardsLeft = 26)
+
+        // What happens when you click on deal
+        var dealButton = findViewById<ImageButton>(R.id.dealButton)
+        dealButton.setOnClickListener{}
 
         //TODO add a greeting
 
