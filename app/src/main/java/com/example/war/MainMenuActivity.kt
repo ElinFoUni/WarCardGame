@@ -1,12 +1,21 @@
 package com.example.war
 
+import android.content.Intent
+import android.hardware.biometrics.PromptContentItemPlainText
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainMenuActivity : AppCompatActivity() {
+
+    //player name
+    lateinit var nameEditText : EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -15,6 +24,26 @@ class MainMenuActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        nameEditText = findViewById(R.id.nameEditText)
+        // returns the player name as a string
+        fun getPlayerName() : String {
+            val playerName = nameEditText.text.toString()
+            return playerName
+        }
+
+        // Code below takes the app to the main class
+        var startButton = findViewById<Button>(R.id.startGameButton)
+
+        startButton.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            //sends the player name to MainActivity as an extra
+            val playerName = getPlayerName()
+            intent.putExtra("player_name", playerName)
+
+            startActivity(intent)
+
         }
     }
 }
