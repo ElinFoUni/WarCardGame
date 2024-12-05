@@ -16,5 +16,8 @@ class LoseScreenActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        //You lose!
+
+        // button.setOnClickListener{finish()}
     }
 }
