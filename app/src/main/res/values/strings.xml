@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">War</string>
+    <string name="deal_button_description">Deal a card</string>
 </resources>

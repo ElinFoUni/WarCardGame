@@ -32,6 +32,8 @@ class Game {
         }
     }
 
+    // humanPlayerCardImage.visibility = View.INVISIBLE
+
     fun checkGameWinState(): Int? {
         return when {
             humanPlayerCards.isEmpty() -> 2 // does it need to be same value as above?

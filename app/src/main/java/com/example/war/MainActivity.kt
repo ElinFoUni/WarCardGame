@@ -40,10 +40,10 @@ class MainActivity : AppCompatActivity() {
         val playerName = intent.getStringExtra("player_name") ?: "Bob" //Defaults to Bob
 
         //creates an object for the human player
-        humanPlayer = Player(name = playerName, cardsLeft = 26)
+        humanPlayer = Player(name = playerName)
 
         //PC player
-        pcPlayer = Player(name = "Computer", cardsLeft = 26)
+        pcPlayer = Player(name = "Computer")
 
         game = Game()
         humanPlayerCardImage = findViewById(R.id.humanPlayerCardImage)
@@ -68,14 +68,13 @@ class MainActivity : AppCompatActivity() {
         val (card1, card2) = game.playRound()
 
         if (card1 != null) {
-            val resourceId1 =
-                resources.getIdentifier(card1.getCardImage(), "drawable", packageName)
+            val resourceId1 = card1.getCardImage()
             humanPlayerCardImage.setImageResource(resourceId1)
         }
         if (card2 != null) {
-            val resourceId2 =
-                resources.getIdentifier(card2.getCardImage(), "drawable", packageName)
+            val resourceId2 = card2.getCardImage()
             pcPlayerCardImage.setImageResource(resourceId2)
         }
     }
+
 }
