@@ -1,5 +1,6 @@
 package com.example.war.classes
 
+import android.view.View
 import android.widget.ImageView
 import com.example.war.R
 
@@ -8,7 +9,6 @@ data class Card(val rank: Int, val suit: String) {
     //fun setCardImage2 (rank : String, suit: Int, image: ImageView) {
 
     //}
-
 
     //set cards to images in drawables folder:
     fun getCardImage(): Int {
@@ -68,14 +68,8 @@ data class Card(val rank: Int, val suit: String) {
             2 to "clubs" -> R.drawable.two_clover
             else -> {
                 println("Debug: Fallback triggered for rank=$rank, suit=$suit")
-                R.drawable.blue_back
-            } // Default fallback image
-
-
-
+                R.drawable.blue_back // Default fallback image
+            }
         }
-
-
     }
-
 }
