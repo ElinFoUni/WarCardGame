@@ -6,10 +6,6 @@ import com.example.war.R
 
 data class Card(val rank: Int, val suit: String) {
 
-    //fun setCardImage2 (rank : String, suit: Int, image: ImageView) {
-
-    //}
-
     //set cards to images in drawables folder:
     fun getCardImage(): Int {
         println("Debug: rank=$rank, suit=$suit")

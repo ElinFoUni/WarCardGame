@@ -17,20 +17,4 @@ class Deck {
         cards.shuffle()
     }
 
-    fun dealCard(): Card? {
-        return if (cards.isNotEmpty()) cards.removeAt(0) else null
-    }
-
-    //Simple version of the draw, should be replaced by a "war" function in actual game.
-    // Doesn't work atm
-    // fun addCardsToBottom(drawedCards: List<Card>) {
-    //    cards.addAll(newCards)
-    //}
-
-
-    // can be used to determine winner/show how many cards left in deck
-    fun getCardCount(): Int {
-        return cards.size - 1
-    }
-
 }
