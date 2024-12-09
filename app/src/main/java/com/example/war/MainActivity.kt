@@ -1,16 +1,17 @@
 package com.example.war
 
-import com.example.war.classes.Player
 import android.os.Bundle
-import android.widget.Button
+import android.util.Log
+import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.war.classes.Card
 import com.example.war.classes.Game
+import com.example.war.classes.Player
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,15 +40,18 @@ class MainActivity : AppCompatActivity() {
         //gets player name from the main menu
         val playerName = intent.getStringExtra("player_name") ?: "Bob" //Defaults to Bob
 
+        humanPlayerCardImage = findViewById(R.id.humanPlayerCardImage)
+        pcPlayerCardImage = findViewById(R.id.pcPlayerCardImage)
+
         //creates an object for the human player
         humanPlayer = Player(name = playerName)
 
         //PC player
         pcPlayer = Player(name = "Computer")
-
+        setCardInvisible()
         game = Game()
-        humanPlayerCardImage = findViewById(R.id.humanPlayerCardImage)
-        pcPlayerCardImage = findViewById(R.id.pcPlayerCardImage)
+
+
         //TODO
         //humanPlayerCountTextView = findViewById(R.id.player1Count)
         //pcPlayerCountTextView = findViewById(R.id.player2Count)
@@ -65,6 +69,7 @@ class MainActivity : AppCompatActivity() {
 
     // show cards on the screen
     fun playRound() {
+        setCardVisible(humanPlayerCardImage, pcPlayerCardImage)
         val (card1, card2) = game.playRound()
 
         if (card1 != null) {
@@ -75,6 +80,40 @@ class MainActivity : AppCompatActivity() {
             val resourceId2 = card2.getCardImage()
             pcPlayerCardImage.setImageResource(resourceId2)
         }
+        Log.d("Card Debug", "Human player's card: $card1")
+        Log.d("Card Debug", "AI player's card: $card2")
     }
+
+    // Sets all cards to invisible
+    fun setCardInvisible() {
+        setHumanCardInvisible(humanPlayerCardImage)
+        setPCCardInvisible(pcPlayerCardImage)
+    }
+
+    // Set all cards as visible
+    fun setCardVisible(humanPlayerCardImage: View, pcPlayerCardImage: View) {
+        setHumanCardVisible(humanPlayerCardImage)
+        setPCCardVisible(pcPlayerCardImage)
+    }
+
+    fun setHumanCardInvisible(humanPlayerCardImage: View) {
+        humanPlayerCardImage.visibility = View.INVISIBLE
+    }
+
+    fun setPCCardInvisible(pcPlayerCardImage: View) {
+        pcPlayerCardImage.visibility = View.INVISIBLE
+    }
+
+    fun setHumanCardVisible(humanPlayerCardImage: View) {
+        humanPlayerCardImage.visibility = View.VISIBLE
+    }
+
+    fun setPCCardVisible(pcPlayerCardImage: View) {
+        pcPlayerCardImage.visibility = View.VISIBLE
+    }
+
+
+
+
 
 }

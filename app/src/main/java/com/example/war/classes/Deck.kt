@@ -1,7 +1,7 @@
 package com.example.war.classes
 
 class Deck {
-    private val suits = listOf("hearts", "diamonds", "spades", "clover")
+    private val suits = listOf("hearts", "diamonds", "spades", "clubs")
     private val ranks = (2..14) //14 is Ace, 13 is King etc
 
     //makes a changable list of cards
@@ -30,7 +30,7 @@ class Deck {
 
     // can be used to determine winner/show how many cards left in deck
     fun getCardCount(): Int {
-        return cards.size
+        return cards.size - 1
     }
 
 }

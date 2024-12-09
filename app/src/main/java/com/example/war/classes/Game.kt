@@ -1,10 +1,13 @@
 package com.example.war.classes
 
+import android.view.View
+
 class Game {
 
     val deck = Deck()
     val humanPlayerCards = mutableListOf<Card>()
     val pcPlayerCards = mutableListOf<Card>()
+    val temporaryCardPile = mutableListOf<Card>()
 
     //divides the deck in two then splits it between the players
     init {
@@ -19,7 +22,10 @@ class Game {
         //takes out the first cards from both card piles
         val p1Card = humanPlayerCards.removeFirstOrNull()
         val p2Card = pcPlayerCards.removeFirstOrNull()
+
+
         return p1Card to p2Card
+
     }
 
     fun determineRoundWinner(humanCard: Card?, pcCard: Card?): Int {
