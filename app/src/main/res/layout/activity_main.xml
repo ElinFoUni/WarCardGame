@@ -14,23 +14,22 @@
         android:text="Cards Left"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.876"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toEndOf="@+id/pcPlayerCardImage"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.069" />
+        app:layout_constraintVertical_bias="0.097" />
 
     <TextView
-        android:id="@+id/pcCardNumberTextView"
+        android:id="@+id/pcPlayerCountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="620dp"
         android:text="X"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.821"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/numberOfCardsLeftText2"
-        app:layout_constraintVertical_bias="0.95" />
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toEndOf="@+id/pcPlayerCardImage"
+        app:layout_constraintTop_toBottomOf="@+id/numberOfCardsLeftText2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/numberOfCardsLeftText"
@@ -38,21 +37,23 @@
         android:layout_height="wrap_content"
         android:text="Cards Left"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintEnd_toStartOf="@+id/dealButton"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.744" />
+        app:layout_constraintVertical_bias="0.752" />
 
     <TextView
-        android:id="@+id/playerCardNumberTextView"
+        android:id="@+id/humanPlayerCountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginBottom="152dp"
         android:text="X"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/dealButton"
+        app:layout_constraintHorizontal_bias="0.445"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numberOfCardsLeftText"
+        app:layout_constraintVertical_bias="0.006" />
 
     <ImageButton
         android:id="@+id/dealButton"
@@ -72,14 +73,14 @@
         android:id="@+id/pcPlayerCardImage"
         android:layout_width="100dp"
         android:layout_height="145dp"
+        android:contentDescription="@string/deal_button_description"
         app:layout_constraintBottom_toTopOf="@+id/roundMessageTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.658"
-        app:srcCompat="@drawable/red_back"
-        android:contentDescription="@string/deal_button_description"/>
+        app:srcCompat="@drawable/red_back" />
 
     <ImageView
         android:id="@+id/humanPlayerCardImage"
