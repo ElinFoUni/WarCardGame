@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,6 +18,9 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var humanPlayer: Player
     lateinit var pcPlayer: Player
+    private lateinit var humanPlayerCount: TextView
+    private lateinit var pcPlayerCount: TextView
+    private lateinit var roundMessage: TextView
     private lateinit var game: Game
 
     //cards shown face up on screen
@@ -40,6 +44,10 @@ class MainActivity : AppCompatActivity() {
         //gets player name from the main menu
         val playerName = intent.getStringExtra("player_name") ?: "Bob" //Defaults to Bob
 
+        humanPlayerCount = findViewById(R.id.humanPlayerCountTextView)
+        pcPlayerCount = findViewById(R.id.pcPlayerCountTextView)
+        roundMessage = findViewById(R.id.roundMessageTextView)
+
         humanPlayerCardImage = findViewById(R.id.humanPlayerCardImage)
         pcPlayerCardImage = findViewById(R.id.pcPlayerCardImage)
 
@@ -50,12 +58,6 @@ class MainActivity : AppCompatActivity() {
         pcPlayer = Player(name = "Computer")
         setCardInvisible()
         game = Game()
-
-
-        //TODO
-        //humanPlayerCountTextView = findViewById(R.id.player1Count)
-        //pcPlayerCountTextView = findViewById(R.id.player2Count)
-        //resultTextView = findViewById(R.id.resultText)
 
         // What happens when you click on deal
         var dealButton = findViewById<ImageButton>(R.id.dealButton)
@@ -80,6 +82,9 @@ class MainActivity : AppCompatActivity() {
             val resourceId2 = card2.getCardImage()
             pcPlayerCardImage.setImageResource(resourceId2)
         }
+        humanPlayerCount.text = "${game.humanPlayerCards.size}"
+        pcPlayerCount.text = "${game.humanPlayerCards.size}"
+
         Log.d("Card Debug", "Human player's card: $card1")
         Log.d("Card Debug", "AI player's card: $card2")
     }
