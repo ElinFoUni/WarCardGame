@@ -27,11 +27,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var humanPlayerCardImage: ImageView
     lateinit var pcPlayerCardImage: ImageView
 
-    //TODO create these in the xml
-    //private lateinit var humanPlayerCountTextView: TextView
-    //private lateinit var pcPlayerCountTextView: TextView
-    //private lateinit var resultTextView: TextView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -65,8 +60,7 @@ class MainActivity : AppCompatActivity() {
             playRound()
         }
         //TODO add a greeting
-        //TODO add win/lose states
-
+        //TODO add win/lose statesg
     }
 
     // show cards on the screen
@@ -117,7 +111,64 @@ class MainActivity : AppCompatActivity() {
         pcPlayerCardImage.visibility = View.VISIBLE
     }
 
+    //returns the two played cards
+    fun playRound(): Pair<Card?, Card?> {
+        // Ensure neither player is out of cards to prevent errors
+        if (humanPlayerCards.isEmpty() || pcPlayerCards.isEmpty()) {
+            return null to null
+        }
+        val humanCard = humanPlayerCards.removeFirstOrNull()
+        val pcCard = pcPlayerCards.removeFirstOrNull()
 
+        // adds cards to the temp pilegg
+        if (humanCard != null) temporaryCardPile.add(humanCard)
+        if (pcCard != null) temporaryCardPile.add(pcCard)
+
+        return when {
+            humanCard == null -> null to pcCard // Human player loses
+            pcCard == null -> humanCard to null // PC player loses
+            humanCard.rank > pcCard.rank -> {
+                // Human wins this round
+                collectCards(humanPlayerCards)
+                humanCard to pcCard
+            }
+            humanCard.rank < pcCard.rank -> {
+                // PC wins this round
+                collectCards(pcPlayerCards)
+                humanCard to pcCard
+            }
+            else -> {
+                // Tie: Recurse with the next cards
+                resolveTie()
+                humanCard to pcCard
+            }
+        }
+
+        fun determineRoundWinner(humanCard: Card?, pcCard: Card?): Int {
+            return when {
+                humanCard == null -> 3 //if human has no cards left (should take you to loss screen)
+                pcCard == null -> 4 // Should take you to Win screen
+                humanCard.rank > pcCard.rank -> 1 // human wins the round
+                humanCard.rank < pcCard.rank -> 2
+                else -> 0 // Draw if the ranks are equal
+            }
+        }
+
+        // humanPlayerCardImage.visibility = View.INVISIBLE
+
+        fun checkGameWinState(): Int? {
+            return when {
+                humanPlayerCards.isEmpty() -> 2 // does it need to be same value as above?
+                pcPlayerCards.isEmpty() -> 1
+                else -> null
+            }
+
+            fugn collecgt gggggggggggggg
+
+
+        }
+
+    }
 
 
 
