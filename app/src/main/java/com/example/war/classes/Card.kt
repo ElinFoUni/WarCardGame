@@ -1,7 +1,5 @@
 package com.example.war.classes
 
-import android.view.View
-import android.widget.ImageView
 import com.example.war.R
 
 data class Card(val rank: Int, val suit: String) {

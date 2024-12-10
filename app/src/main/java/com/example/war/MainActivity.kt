@@ -11,7 +11,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.war.classes.Card
 import com.example.war.classes.Game
 import com.example.war.classes.Player
 
@@ -75,8 +74,9 @@ class MainActivity : AppCompatActivity() {
             val resourceId2 = card2.getCardImage()
             pcPlayerCardImage.setImageResource(resourceId2)
         }
-        humanPlayerCount.text = "${game.humanPlayerCards.size}"
-        pcPlayerCount.text = "${game.humanPlayerCards.size}"
+        // card counter
+        humanPlayerCount.text = "${game.humanPlayerCards.size - 1}"
+        pcPlayerCount.text = "${game.pcPlayerCards.size - 1}"
 
         when {
             card1 == null -> {

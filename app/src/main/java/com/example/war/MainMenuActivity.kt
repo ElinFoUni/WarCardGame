@@ -1,11 +1,9 @@
 package com.example.war
 
 import android.content.Intent
-import android.hardware.biometrics.PromptContentItemPlainText
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -14,7 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 class MainMenuActivity : AppCompatActivity() {
 
     //player name
-    lateinit var nameEditText : EditText
+    private lateinit var nameEditText : EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +32,7 @@ class MainMenuActivity : AppCompatActivity() {
         }
 
         // Code below takes the app to the main class
-        var startButton = findViewById<Button>(R.id.startGameButton)
+        val startButton = findViewById<Button>(R.id.startGameButton)
 
         startButton.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)

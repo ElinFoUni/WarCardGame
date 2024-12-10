@@ -1,13 +1,11 @@
 package com.example.war.classes
 
-import android.view.View
-
 class Game {
 
-    val deck = Deck()
+    private val deck = Deck()
     val humanPlayerCards = mutableListOf<Card>()
     val pcPlayerCards = mutableListOf<Card>()
-    val temporaryCardPile = mutableListOf<Card>() // holds the cards in play
+    private val temporaryCardPile = mutableListOf<Card>() // holds the cards in play
 
     //divides the deck into two chunks then splits it between the players
     init {
