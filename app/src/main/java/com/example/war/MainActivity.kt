@@ -78,6 +78,7 @@ class MainActivity : AppCompatActivity() {
         humanPlayerCount.text = "${game.humanPlayerCards.size - 1}"
         pcPlayerCount.text = "${game.pcPlayerCards.size - 1}"
 
+
         when {
             card1 == null -> {
                 goToLoseScreen()
@@ -86,10 +87,10 @@ class MainActivity : AppCompatActivity() {
                 goToWinScreen()
             }
             card1.rank > card2.rank -> {
-                roundMessage.text = "The Computer wins this round!"
+                roundMessage.text = "You win this round!"
             }
             card1.rank < card2.rank -> {
-                roundMessage.text = "You wins this round!"
+                roundMessage.text = "The computer wins this round!"
             }
             else -> {
                 roundMessage.text = "It's a tie!"
@@ -99,6 +100,9 @@ class MainActivity : AppCompatActivity() {
         // can be used to see what card is actually played, in the log, if the UI has issues
         Log.d("Card Debug", "Human player's card: $card1")
         Log.d("Card Debug", "AI player's card: $card2")
+
+        Log.d("Card Count Debug", "Human count: ${game.humanPlayerCards.size - 1}, PC count: ${game.pcPlayerCards.size - 1}")
+        Log.d("TextView Assignment", "Human: $humanPlayerCount, PC: $pcPlayerCount")
     }
 
     // Goes to the win screen
