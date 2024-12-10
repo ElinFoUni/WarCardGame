@@ -29,6 +29,8 @@ class Game {
         if (humanCard != null) temporaryCardPile.add(humanCard)
         if (pcCard != null) temporaryCardPile.add(pcCard)
 
+        println("Debug: Human card: $humanCard, PC card: $pcCard")
+
         // Checks to see what the outcome of the round is
         return when {
             // checks if either player is out of cards
@@ -37,6 +39,8 @@ class Game {
 
             // Human wins the round
             humanCard.rank > pcCard.rank -> {
+                println("Debug: Human wins round")
+
                 // calls the winCards function to add the cards to the bottom of the deck
                 collectWinnings(humanPlayerCards)
                 humanCard to pcCard
@@ -44,6 +48,7 @@ class Game {
 
             // PC wins the round
             humanCard.rank < pcCard.rank -> {
+                println("Debug: PC wins round")
                 collectWinnings(pcPlayerCards)
                 humanCard to pcCard
             }
@@ -99,8 +104,10 @@ class Game {
 
     // appends the elements of the temporary deck to the bottom of the round winner's deck
     private fun collectWinnings(roundWinner: MutableList<Card>) {
+        if (temporaryCardPile.isNotEmpty()) {
         roundWinner.addAll(temporaryCardPile)
         temporaryCardPile.clear()
+            }
     }
 
 }
