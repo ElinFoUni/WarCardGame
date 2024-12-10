@@ -1,5 +1,6 @@
 package com.example.war
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -16,16 +17,16 @@ import com.example.war.classes.Player
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var humanPlayer: Player
-    lateinit var pcPlayer: Player
+    private lateinit var humanPlayer: Player
+    private lateinit var pcPlayer: Player
     private lateinit var humanPlayerCount: TextView
     private lateinit var pcPlayerCount: TextView
     private lateinit var roundMessage: TextView
     private lateinit var game: Game
 
     //cards shown face up on screen
-    lateinit var humanPlayerCardImage: ImageView
-    lateinit var pcPlayerCardImage: ImageView
+    private lateinit var humanPlayerCardImage: ImageView
+    private lateinit var pcPlayerCardImage: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,14 +56,14 @@ class MainActivity : AppCompatActivity() {
         game = Game()
 
         // What happens when you click on deal
-        var dealButton = findViewById<ImageButton>(R.id.dealButton)
+        val dealButton = findViewById<ImageButton>(R.id.dealButton)
         dealButton.setOnClickListener{
             play()
         }
     }
 
     // show cards on the screen
-    fun play() {
+    private fun play() {
         setCardVisible(humanPlayerCardImage, pcPlayerCardImage)
         val (card1, card2) = game.playRound()
 
@@ -77,35 +78,67 @@ class MainActivity : AppCompatActivity() {
         humanPlayerCount.text = "${game.humanPlayerCards.size}"
         pcPlayerCount.text = "${game.humanPlayerCards.size}"
 
+        when {
+            card1 == null -> {
+                goToLoseScreen()
+            }
+            card2 == null -> {
+                goToWinScreen()
+            }
+            card1.rank > card2.rank -> {
+                roundMessage.text = "The Computer wins this round!"
+            }
+            card1.rank < card2.rank -> {
+                roundMessage.text = "You wins this round!"
+            }
+            else -> {
+                roundMessage.text = "It's a tie!"
+            }
+        }
+
+        // can be used to see what card is actually played, in the log, if the UI has issues
         Log.d("Card Debug", "Human player's card: $card1")
         Log.d("Card Debug", "AI player's card: $card2")
     }
 
+    // Goes to the win screen
+    private fun goToWinScreen() {
+        val intent = Intent(this, WinScreenActivity::class.java)
+        startActivity(intent)
+        finish()    }
+
+    // Goes to the lose screen
+    private fun goToLoseScreen() {
+        val intent = Intent(this, LoseScreenActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
     // Sets all cards to invisible
-    fun setCardInvisible() {
+    private fun setCardInvisible() {
         setHumanCardInvisible(humanPlayerCardImage)
         setPCCardInvisible(pcPlayerCardImage)
     }
 
     // Set all cards as visible
-    fun setCardVisible(humanPlayerCardImage: View, pcPlayerCardImage: View) {
+    private fun setCardVisible(humanPlayerCardImage: View, pcPlayerCardImage: View) {
         setHumanCardVisible(humanPlayerCardImage)
         setPCCardVisible(pcPlayerCardImage)
     }
 
-    fun setHumanCardInvisible(humanPlayerCardImage: View) {
+    private fun setHumanCardInvisible(humanPlayerCardImage: View) {
         humanPlayerCardImage.visibility = View.INVISIBLE
     }
 
-    fun setPCCardInvisible(pcPlayerCardImage: View) {
+    private fun setPCCardInvisible(pcPlayerCardImage: View) {
         pcPlayerCardImage.visibility = View.INVISIBLE
     }
 
-    fun setHumanCardVisible(humanPlayerCardImage: View) {
+    private fun setHumanCardVisible(humanPlayerCardImage: View) {
         humanPlayerCardImage.visibility = View.VISIBLE
     }
 
-    fun setPCCardVisible(pcPlayerCardImage: View) {
+    private fun setPCCardVisible(pcPlayerCardImage: View) {
         pcPlayerCardImage.visibility = View.VISIBLE
     }
 }

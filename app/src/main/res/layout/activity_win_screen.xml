@@ -7,4 +7,15 @@
     android:layout_height="match_parent"
     tools:context=".WinScreenActivity">
 
+    <TextView
+        android:id="@+id/winTextView"
+        android:layout_width="138dp"
+        android:layout_height="45dp"
+        android:text="You Win!"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
