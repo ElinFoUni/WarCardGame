@@ -86,10 +86,10 @@ class MainActivity : AppCompatActivity() {
                 goToWinScreen()
             }
             card1.rank > card2.rank -> {
-                roundMessage.text = "${humanPlayer} wins this round!"
+                roundMessage.text = "The Computer wins this round!"
             }
             card1.rank < card2.rank -> {
-                roundMessage.text = "${pcPlayer} wins this round!"
+                roundMessage.text = "You wins this round!"
             }
             else -> {
                 roundMessage.text = "It's a tie!"

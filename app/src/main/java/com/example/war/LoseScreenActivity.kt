@@ -1,6 +1,9 @@
 package com.example.war
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,8 +19,13 @@ class LoseScreenActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        //You lose!
 
-        // button.setOnClickListener{finish()}
+        // goes back to the main menu after a few seconds
+        Handler(Looper.getMainLooper()).postDelayed({
+            val mainIntent = Intent(this@LoseScreenActivity, MainMenuActivity::class.java)
+            startActivity(mainIntent)
+            finish()
+        }, 3500)
+
     }
 }
